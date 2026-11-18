@@ -1,13 +1,13 @@
-evidence_id,claim_or_artifact,source,source_date,status,integrity_identifier,limitations
-E-ING-001,Downstream repository metadata,https://api.github.com/repos/lockedbaeblade/ingress-nginx,2026-11-18,SOURCE FACT,repository_id=1463356506;default_branch=main,Snapshot can change
-E-ING-002,Upstream parent metadata and archive status,https://api.github.com/repos/kubernetes/ingress-nginx,2026-11-18,SOURCE FACT,repository_id=72891330;archived=true,Metadata observation
-E-ING-003,Upstream retirement statement,https://kubernetes.io/blog/2026/01/29/ingress-nginx-statement/,2026-01-29,EXTERNAL RESEARCH,URL,Retirement completed 2026-03-24
-E-ING-004,Upstream archived state,https://github.com/kubernetes/ingress-nginx,2026-03-24,EXTERNAL RESEARCH,URL,GitHub marks repository read-only
-E-ING-005,Downstream main head commit,https://github.com/lockedbaeblade/ingress-nginx/commit/dbb11b92ddb77bee9c35e462479129354c84f939,2026-03-19,SOURCE FACT,git_commit=dbb11b92ddb77bee9c35e462479129354c84f939,Git SHA is not SHA-256
-E-ING-006,Downstream root README,https://raw.githubusercontent.com/lockedbaeblade/ingress-nginx/main/README.md,2026-11-18,SOURCE FACT,git_blob=449b525a136ccbe8b07f5ed71113ecec145b7309,Git SHA-1 blob identifier
-E-ING-007,Controller Helm chart metadata,https://github.com/lockedbaeblade/ingress-nginx/blob/main/charts/ingress-nginx/Chart.yaml,2026-11-18,SOURCE FACT,git_blob=,Git blob SHA observed in root tree not copied here
-E-ING-008,Trivy scan workflow,https://github.com/lockedbaeblade/ingress-nginx/blob/main/.github/workflows/vulnerability-scans.yaml,2026-11-18,SOURCE FACT,exit-code=0,Workflow existence does not prove scan passed
-E-ING-009,Gateway API implementation conformance list,https://gateway-api.sigs.k8s.io/docs/implementations/list/,2026-11-18,EXTERNAL RESEARCH,URL,Recheck before selecting an implementation
-E-ING-010,Ingress2Gateway converter and caveats,https://github.com/kubernetes-sigs/ingress2gateway,2026-11-18,EXTERNAL RESEARCH,version-v1.0 documentation,Feature coverage may change
-E-ING-011,CIP frozen specification,CIP_vNext_Authoritative_Spec_v0.1.0.zip,2026-09-17,SOURCE FACT,sha256=b103e31b4a402d0e28d34231a1ae65d28d85a190229576f46d65c8a9a0b84b1d,Authority is scoped to Context Vault vNext
-E-ING-012,User-supplied repository page,conversation source,2026-11-18,USER-SUPPLIED SNAPSHOT,not separately hashed,Page display is not complete commit attribution
+"evidence_id","claim_or_artifact","source","source_date","status","integrity_identifier","limitations"
+"E-ING-001","Downstream repository metadata","https://api.github.com/repos/lockedbaeblade/ingress-nginx","2026-11-18","SOURCE FACT","repository_id=1463356506; default_branch=main","Snapshot can change"
+"E-ING-002","Upstream parent metadata and archive status","https://api.github.com/repos/kubernetes/ingress-nginx","2026-11-18","SOURCE FACT","repository_id=72891330; archived=true","Metadata observation"
+"E-ING-003","Upstream retirement statement","https://kubernetes.io/blog/2026/01/29/ingress-nginx-statement/","2026-01-29","EXTERNAL RESEARCH","URL","Retirement completed 2026-03-24"
+"E-ING-004","Upstream archived state","https://github.com/kubernetes/ingress-nginx","2026-03-24","EXTERNAL RESEARCH","URL","GitHub marks repository read-only"
+"E-ING-005","Downstream main head commit","https://github.com/lockedbaeblade/ingress-nginx/commit/dbb11b92ddb77bee9c35e462479129354c84f939","2026-03-19","SOURCE FACT","git_commit=dbb11b92ddb77bee9c35e462479129354c84f939","Git SHA is not SHA-256"
+"E-ING-006","Downstream root README","https://raw.githubusercontent.com/lockedbaeblade/ingress-nginx/main/README.md","2026-11-18","SOURCE FACT","git_blob_sha=449b525a136ccbe8b07f5ed71113ecec145b7309","Git SHA-1 blob identifier; source snapshot may change"
+"E-ING-007","Controller Helm chart metadata","https://github.com/lockedbaeblade/ingress-nginx/blob/main/charts/ingress-nginx/Chart.yaml","2026-11-18","SOURCE FACT","git_blob_sha=347c57370fab66ab917816467c3268d27ea4a073","Git SHA-1 blob identifier; source snapshot may change"
+"E-ING-008","Trivy scan workflow","https://github.com/lockedbaeblade/ingress-nginx/blob/main/.github/workflows/vulnerability-scans.yaml","2026-11-18","SOURCE FACT","git_blob_sha=de46af86cf5f4a7f924851499b54e7b14e550168; exit-code=0","Workflow existence does not prove a scan passed or gate release"
+"E-ING-009","Gateway API implementation conformance list","https://gateway-api.sigs.k8s.io/docs/implementations/list/","2026-11-18","EXTERNAL RESEARCH","URL","Recheck current conformance before selecting an implementation"
+"E-ING-010","Ingress2Gateway converter and caveats","https://github.com/kubernetes-sigs/ingress2gateway","2026-11-18","EXTERNAL RESEARCH","version-v1.0 documentation","Feature coverage may change; unsupported features require manual review"
+"E-ING-011","CIP frozen specification","CIP_vNext_Authoritative_Spec_v0.1.0.zip","2026-09-17","SOURCE FACT","sha256=b103e31b4a402d0e28d34231a1ae65d28d85a190229576f46d65c8a9a0b84b1d","Authority is scoped to Context Vault vNext; this overlay does not revise it"
+"E-ING-012","User-supplied repository page","conversation source","2026-11-18","USER-SUPPLIED SNAPSHOT","not separately hashed","UI display is not a complete commit or authorship register"
