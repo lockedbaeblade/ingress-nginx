@@ -1,3 +1,30 @@
+# CIP-governed downstream fork notice
+
+> **Lifecycle status — assessed 2026-11-18:** the upstream Kubernetes Ingress NGINX project was retired and its repository archived on **2026-03-24**. Upstream states that no further releases, bug fixes, or security updates will be issued. This downstream fork does not change that upstream lifecycle status.
+
+This repository is retained as a **legacy source reference and migration input**. It is **not approved by this project for new production deployments** and must not be described as an actively maintained or security-supported ingress controller unless a separately governed downstream maintenance program is established and independently verified.
+
+A fork being unarchived on GitHub, having a writable branch, or retaining upstream CI files does not establish that security fixes are being produced, reviewed, tested, or released.
+
+## CIP operating direction
+
+1. Preserve upstream code, license notices, authorship history, and commit ancestry.
+2. Keep this fork's changes separate from upstream-origin material and record provenance for each downstream change.
+3. Do not publish a new controller image or Helm chart as a supported security-maintained release under this repository without an approved maintenance owner, vulnerability response process, reproducible build, signed provenance, and release-gate evidence.
+4. For new or continuing production edge routing, evaluate a maintained **Kubernetes Gateway API implementation** and plan a controlled migration. Gateway API is a standard; a conformant implementation must still be selected for the target environment.
+5. Use the documents under [CIP/](CIP/README.md) for the repository assessment, threat model, contributor attribution, migration plan, and release gate.
+
+## Important boundaries
+
+- The original upstream README is retained below this notice.
+- The upstream Apache-2.0 license and notices remain applicable to upstream-origin files. This notice does not relicense them.
+- No Kubernetes cluster, deployment, live traffic, vulnerability scan, or build was tested as part of this documentation change.
+- This documentation is a governance overlay. It does not claim that CIP's Context Vault Policy Authorization Engine (PAE) has been integrated into this Go controller.
+
+---
+
+## Upstream README (retained)
+
 # Ingress NGINX Retirement
 
 ## Retiring
