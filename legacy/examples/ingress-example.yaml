@@ -1,0 +1,70 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: legacy-example
+  namespace: cip-legacy-ingress
+spec:
+  ingressClassName: cip-legacy-nginx
+  tls:
+    - hosts:
+        - legacy.example.test
+      secretName: legacy-example-tls
+  rules:
+    - host: legacy.example.test
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: legacy-echo
+                port:
+                  number: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: legacy-echo
+  namespace: cip-legacy-ingress
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: legacy-echo
+  template:
+    metadata:
+      labels:
+        app: legacy-echo
+    spec:
+      automountServiceAccountToken: false
+      containers:
+        - name: echo
+          image: hashicorp/http-echo:1.0.0
+          args: ["-listen=:5678", "-text=legacy-ingress-example"]
+          ports:
+            - name: http
+              containerPort: 5678
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: ["ALL"]
+          resources:
+            requests:
+              cpu: 25m
+              memory: 32Mi
+            limits:
+              cpu: 200m
+              memory: 64Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: legacy-echo
+  namespace: cip-legacy-ingress
+spec:
+  selector:
+    app: legacy-echo
+  ports:
+    - name: http
+      port: 80
+      targetPort: http

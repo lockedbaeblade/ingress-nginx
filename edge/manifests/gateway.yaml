@@ -1,0 +1,38 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: GatewayClass
+metadata:
+  name: eg
+spec:
+  controllerName: gateway.envoyproxy.io/gatewayclass-controller
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: cip-public
+  namespace: cip-edge-system
+  labels:
+    app.kubernetes.io/part-of: cip-edge
+spec:
+  gatewayClassName: eg
+  listeners:
+    - name: http
+      hostname: app.example.test
+      port: 80
+      protocol: HTTP
+      allowedRoutes:
+        namespaces:
+          from: Same
+    - name: https
+      hostname: app.example.test
+      port: 443
+      protocol: HTTPS
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - kind: Secret
+            group: ""
+            name: cip-edge-tls
+      allowedRoutes:
+        namespaces:
+          from: All
+          # Replace with a namespaceSelector when tenant boundaries are known.

@@ -1,0 +1,43 @@
+controller:
+  replicaCount: 2
+  minAvailable: 1
+  watchIngressWithoutClass: false
+  ingressClassByName: false
+  ingressClass: cip-legacy-nginx
+  ingressClassResource:
+    enabled: true
+    name: cip-legacy-nginx
+    default: false
+    controllerValue: k8s.io/ingress-nginx
+  allowSnippetAnnotations: false
+  enableAnnotationValidations: true
+  admissionWebhooks:
+    enabled: true
+    failurePolicy: Fail
+  metrics:
+    enabled: false
+  scope:
+    enabled: true
+  service:
+    enabled: true
+    external:
+      enabled: true
+    type: LoadBalancer
+    loadBalancerSourceRanges: []
+  autoscaling:
+    enabled: false
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+  containerSecurityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+        - ALL
+  image:
+    tag: v1.15.1
+    digest: sha256:594ceea76b01c592858f803f9ff4d2cb40542cae2060410b2c95f75907d659e1
+    pullPolicy: IfNotPresent
+  config:
+    annotations-risk-level: High
+    strict-validate-path-type: "true"
