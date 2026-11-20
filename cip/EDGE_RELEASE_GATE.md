@@ -9,7 +9,7 @@
 - [x] HTTPS listener and HTTP-to-HTTPS redirect resources.
 - [x] Demo workload with no ServiceAccount token and restrictive container security context.
 - [x] Legacy controller install is opt-in, context-guarded, version-checked and image-digest-pinned.
-- [ ] YAML/schema validation run against the pinned CRDs.
+- [x] Shell syntax check (`bash -n`) passed for both install scripts.\n- [x] YAML syntax parsing passed for all five committed YAML documents.\n- [ ] Kubernetes API schema validation run against the pinned CRDs.
 - [ ] Helm render executed against this branch in a real checkout.
 - [ ] Install and runtime verification on a supported test cluster.
 - [ ] TLS certificate issuance/rotation tested.
