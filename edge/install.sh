@@ -17,6 +17,7 @@ fi
 
 command -v helm >/dev/null
 command -v kubectl >/dev/null
+command -v python3 >/dev/null
 kubectl auth can-i create customresourcedefinitions.apiextensions.k8s.io | grep -qx yes || {
   echo "Current identity cannot create CRDs." >&2; exit 4;
 }
