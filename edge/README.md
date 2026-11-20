@@ -15,7 +15,7 @@
 
 ## Install
 
-From the repository root, after verifying the target kube context and cluster version:
+Prerequisites: `kubectl`, Helm 3 with OCI support, Python 3, permission to create CRDs, a reachable Kubernetes 1.34–1.37 cluster, and an existing TLS Secret. The target cluster's network/load-balancer implementation must be configured separately.\n\nFrom the repository root, after verifying the target kube context and cluster version:
 
 ```bash
 export CIP_EXPECTED_KUBE_CONTEXT="$(kubectl config current-context)"
