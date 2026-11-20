@@ -28,6 +28,6 @@ read -r -p "Type INSTALL-RETIRED-INGRESS to proceed: " CONFIRM
 helm upgrade --install cip-legacy-ingress ./charts/ingress-nginx \
   --namespace cip-legacy-ingress --create-namespace \
   -f legacy/values-cip.yaml --wait --timeout 10m
-kubectl -n cip-legacy-ingress rollout status deployment/cip-legacy-ingress-controller --timeout=180s || true
+kubectl -n cip-legacy-ingress rollout status deployment/cip-legacy-ingress-controller --timeout=180s
 helm status cip-legacy-ingress -n cip-legacy-ingress
 echo "Legacy chart installed. This does not establish security support or production readiness."
