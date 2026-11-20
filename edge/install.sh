@@ -21,6 +21,9 @@ command -v python3 >/dev/null
 kubectl auth can-i create customresourcedefinitions.apiextensions.k8s.io | grep -qx yes || {
   echo "Current identity cannot create CRDs." >&2; exit 4;
 }
+kubectl -n cip-edge-system get secret cip-edge-tls >/dev/null 2>&1 || {
+  echo "Create namespace cip-edge-system and TLS Secret cip-edge-tls before installing." >&2; exit 5;
+}
 
 # The pinned Envoy Gateway chart installs compatible Gateway API and Envoy Gateway CRDs.
 helm upgrade --install eg oci://docker.io/envoyproxy/gateway-helm \
@@ -29,13 +32,8 @@ helm upgrade --install eg oci://docker.io/envoyproxy/gateway-helm \
 
 kubectl wait --timeout=5m -n envoy-gateway-system deployment/envoy-gateway --for=condition=Available
 kubectl apply -f edge/manifests/namespaces.yaml
-if ! kubectl -n cip-edge-system get secret cip-edge-tls >/dev/null 2>&1; then
-  echo "Missing cip-edge-tls in cip-edge-system. Create it securely, then rerun this script." >&2
-  exit 5
-fi
-
 kubectl apply -f edge/manifests/gateway.yaml
 kubectl apply -f edge/manifests/demo-app.yaml
-kubectl -n cip-edge-system wait --for=condition=Programmed gateway/cip-public --timeout=180s || true
+kubectl -n cip-edge-system wait --for=condition=Programmed gateway/cip-public --timeout=180s
 kubectl -n cip-edge-system get gateway cip-public -o wide
 echo "Install steps completed. Verify Gateway status, external address, DNS, TLS and application behavior before declaring service live."
