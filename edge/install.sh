@@ -21,14 +21,12 @@ kubectl auth can-i create customresourcedefinitions.apiextensions.k8s.io | grep 
   echo "Current identity cannot create CRDs." >&2; exit 4;
 }
 
-helm upgrade --install eg-crds oci://docker.io/envoyproxy/gateway-crds-helm \
-  --version v1.10.0 --namespace envoy-gateway-system --create-namespace \
-  --wait --timeout 10m
-
+# The pinned Envoy Gateway chart installs compatible Gateway API and Envoy Gateway CRDs.
 helm upgrade --install eg oci://docker.io/envoyproxy/gateway-helm \
   --version v1.10.0 --namespace envoy-gateway-system --create-namespace \
   --wait --timeout 10m
 
+kubectl wait --timeout=5m -n envoy-gateway-system deployment/envoy-gateway --for=condition=Available
 kubectl apply -f edge/manifests/namespaces.yaml
 if ! kubectl -n cip-edge-system get secret cip-edge-tls >/dev/null 2>&1; then
   echo "Missing cip-edge-tls in cip-edge-system. Create it securely, then rerun this script." >&2
