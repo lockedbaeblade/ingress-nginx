@@ -41,3 +41,11 @@ This overlay does **not** silently modify the frozen CIP specification or claim 
 ## Non-goals
 
 This overlay does not make legal ownership determinations, attribute all upstream intellectual property to the fork owner, assert that a person committed code without commit evidence, guarantee security, or authorize a cluster deployment.
+
+
+## Edge Gateway implementation package
+
+- [Edge Gateway v0.2.0](../edge/README.md)
+- [Controlled legacy operations pack](../legacy/README.md)
+- [CIP PAE edge authorization integration contract](../cip/EDGE_AUTHZ_INTEGRATION.md)
+- [Edge release gate](../cip/EDGE_RELEASE_GATE.md)
