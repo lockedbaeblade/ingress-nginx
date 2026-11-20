@@ -15,7 +15,7 @@ The install script is deliberately gated by:
 - an explicit local chart in this repository
 - a chart version check for 4.15.1
 
-The controller is isolated to its own namespace and dedicated IngressClass. It does not process classless Ingress resources, does not allow snippet annotations, uses the chart's pinned image digest, enables validating admission webhooks with failurePolicy Fail, and requests two replicas. These are risk-reduction controls, not a security support promise.
+The controller is isolated to its own namespace and dedicated IngressClass. It does not process classless Ingress resources, does not allow snippet annotations, uses the chart's pinned image digest, enables validating admission webhooks with failurePolicy Fail, and requests two replicas. These are risk-reduction controls, not a security support promise. The Service uses LoadBalancer with an empty source-range allowlist (publicly reachable where the platform provisions a public load balancer); set `controller.service.loadBalancerSourceRanges` to the actual approved CIDRs before exposing it where source restriction is required.
 
 ## Install
 
