@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: cip-legacy-ingress
+  labels:
+    app.kubernetes.io/part-of: cip-legacy-ingress
+    pod-security.kubernetes.io/enforce: baseline
