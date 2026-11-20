@@ -25,8 +25,9 @@ echo "Active kube context: $CURRENT_CONTEXT"
 read -r -p "Type INSTALL-RETIRED-INGRESS to proceed: " CONFIRM
 [[ "$CONFIRM" == "INSTALL-RETIRED-INGRESS" ]] || { echo "Cancelled."; exit 6; }
 
+kubectl apply -f legacy/namespace.yaml
 helm upgrade --install cip-legacy-ingress ./charts/ingress-nginx \
-  --namespace cip-legacy-ingress --create-namespace \
+  --namespace cip-legacy-ingress \
   -f legacy/values-cip.yaml --wait --timeout 10m
 kubectl -n cip-legacy-ingress rollout status deployment/cip-legacy-ingress-controller --timeout=180s
 helm status cip-legacy-ingress -n cip-legacy-ingress
